@@ -1,0 +1,23 @@
+{
+  // Purely for linting/typechecking, Gatsby is actually doing the compiling of typescript, hence the noEmit in this config.
+  "include": [
+    "./src/**/*",
+    "gatsby-*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "node",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "allowJs": false,
+    "jsx": "react",
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true
+  }
+}

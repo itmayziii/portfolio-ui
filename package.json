@@ -1,43 +1,59 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "itmayziii-portfolio-ui",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Personal frontend portfolio at https://www.fullheapdeveloper.com for Tommy May III",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Tommy May <tommymay37@gmail.com>",
+  "scripts": {
+    "start": "npm run develop",
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "serve": " gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
+    "typecheck": "tsc --project tsconfig.json",
+    "lint": "eslint --config .eslintrc.js --ext .js,.ts,.jsx,.tsx ./src gatsby-* && npm run typecheck",
+    "lint:fix": "eslint --fix --config .eslintrc.js --ext .js,.ts,.jsx,.tsx ./src && npm run typecheck"
+  },
   "dependencies": {
-    "gatsby": "^2.15.28",
-    "gatsby-image": "^2.2.23",
-    "gatsby-plugin-manifest": "^2.2.20",
-    "gatsby-plugin-offline": "^3.0.11",
-    "gatsby-plugin-react-helmet": "^3.1.10",
-    "gatsby-plugin-sharp": "^2.2.27",
-    "gatsby-source-filesystem": "^2.1.28",
-    "gatsby-transformer-sharp": "^2.2.19",
-    "prop-types": "^15.7.2",
-    "react": "^16.10.0",
-    "react-dom": "^16.10.0",
-    "react-helmet": "^5.2.1"
+    "gatsby": "~2.18.17",
+    "gatsby-image": "~2.2.23",
+    "gatsby-plugin-manifest": "~2.2.20",
+    "gatsby-plugin-offline": "~3.0.11",
+    "gatsby-plugin-react-helmet": "~3.1.10",
+    "gatsby-plugin-sharp": "~2.2.27",
+    "gatsby-plugin-typescript": "~2.1.11",
+    "gatsby-source-filesystem": "~2.1.28",
+    "gatsby-transformer-sharp": "~2.2.19",
+    "prop-types": "~15.7.2",
+    "react": "~16.12.0",
+    "react-dom": "~16.12.0",
+    "react-helmet": "~5.2.1"
   },
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "@typescript-eslint/eslint-plugin": "~2.3.3",
+    "@typescript-eslint/parser": "~2.3.3",
+    "eslint": "~6.5.1",
+    "eslint-config-standard": "~14.1.0",
+    "eslint-plugin-import": "~2.18.2",
+    "eslint-plugin-node": "~9.2.0",
+    "eslint-plugin-promise": "~4.2.1",
+    "eslint-plugin-react": "~7.14.3",
+    "eslint-plugin-react-hooks": "~2.1.1",
+    "eslint-plugin-standard": "~4.0.1",
+    "eslint-plugin-standard-typescript": "~1.0.1",
+    "typescript": "~3.5.3"
   },
   "keywords": [
+    "portfolio",
+    "fullheapdeveloper",
     "gatsby"
   ],
   "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/itmayziii/portfolio-ui"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/itmayziii/portfolio-ui/issues"
   }
 }
