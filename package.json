@@ -2,7 +2,7 @@
   "name": "itmayziii-portfolio-ui",
   "private": true,
   "description": "Personal frontend portfolio at https://www.fullheapdeveloper.com for Tommy May III",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Tommy May <tommymay37@gmail.com>",
   "scripts": {
     "start": "npm run develop",
