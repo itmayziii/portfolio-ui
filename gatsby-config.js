@@ -9,13 +9,6 @@ module.exports = {
   plugins: [
     'gatsby-plugin-typescript',
     'gatsby-plugin-react-helmet',
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: path.resolve(__dirname, 'src', 'assets', 'images')
-      }
-    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
