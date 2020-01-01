@@ -4,6 +4,13 @@ Personal portfolio of [Tommy May III](https://www.fullheapdeveloper.com)
 ## Development
 This project is built with [GatsbyJS](https://www.gatsbyjs.org/).
 
+### Setup
+You will first need to setup the necessary environment variables. A good start is to copy the example `cp .env.example .env`. We do not follow
+the [conventional way Gatsby uses ENV vars](https://www.gatsbyjs.org/docs/environment-variables/) because most ENV vars on the frontend are by
+their very nature not secrets. Gatsby wants you to have different env var files for each environment but this is cumbersome and you will almost
+always want to be able to do a production build with dev variables and the inverse from time to time. The `.env` file you copied above is used
+in the `gatsby-config.js` configuration file and is available to the frontend through `process.env[VARIABLE_NAME]` but only at build time not runtime.
+
 ### Useful Commands
 * Start dev server - `npm run start`
 * Lint - `npm run lint:fix`

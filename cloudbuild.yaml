@@ -14,3 +14,5 @@ steps:
   - name: 'node:12'
     entrypoint: 'npm'
     args: ['run', 'build']
+    env:
+      - 'GATSBY_DOMAIN=fullheapdeveloper.com'
