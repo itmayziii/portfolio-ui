@@ -9,6 +9,12 @@ This project is built with [GatsbyJS](https://www.gatsbyjs.org/).
 * Lint - `npm run lint:fix`
 * Test - `npm run test`
 
+### Pre Commit/Push Hooks
+Every commit/push is being checked by the linter and tests to validate it before the commit or push. This is mostly to maintain quality 
+assurance and to make sure we don't have code failing when it makes it to the [CI](#cloud-build-cihttpscloudgooglecomcloud-build). These
+hooks come from the [husky package](https://github.com/typicode/husky) and the configuration can be found under the `husky` property in the 
+[package.json](package.json).
+
 ### Linting
 Linting is handled by ESLint and a [StandardJS/Typescript plugin](https://www.npmjs.com/package/eslint-plugin-standard-typescript).
 
