@@ -1,32 +1,37 @@
 # itmayziii portfolio-ui
 Personal portfolio of [Tommy May III](https://www.fullheapdeveloper.com)
 
-## Deployments
-This static site is being stored in [Google Cloud Storage](https://cloud.google.com/storage/) at [this bucket](https://console.cloud.google.com/storage/browser/itmayziii-portfolio?project=itmayziii).
-Bucket content is being served through a [Google HTTPS load balancer](https://cloud.google.com/load-balancing/docs/https/) with
-[Cloud CDN](https://cloud.google.com/cdn/) enabled. Deploying to this bucket only involves [creating a git tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging)
-and our CI tool [Google Cloud Build](https://cloud.google.com/cloud-build/) will deploy the static files. If you are interested in seeing the
-commands that Google Cloud Build is running then check out the [configuration file](cloudbuild-build.yaml).
+## Deployment
+Docker is being used for [dev/prod parity](https://12factor.net/dev-prod-parity).
 
-A lot of information can be found [here](https://cloud.google.com/storage/docs/hosting-static-website) for hosting static sites with Google
-Cloud Storage. However the difference is we are using a load balancer in front of the storage bucket.
+The deployment flow is:
+1. [Create a new Git tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) from the master branch and push that tag to Github `git push --folow-tags`.
+2. [Cloud build](#cloud-build-cihttpscloudgooglecomcloud-build) will pickup this new tag and create a Docker image based on the [Dockerfile](Dockerfile).
+3. Once cloud build is finished we are relying on [GCP Instance Groups](https://cloud.google.com/compute/docs/instance-groups/) to host our
+Nginx Docker container. In order to update a instance group we must update the template the instance group is using, [instructions are here](https://cloud.google.com/compute/docs/containers/deploying-containers#updating_a_managed_instance_group_running_a_container).
+
+**Note** _Not currently relying on kubernetes as it is overkill on pricing with only needing this Nginx container._
 
 ## Infrastructure Notes
 Some of these notes involve the use of the [gsutil CLI](https://cloud.google.com/storage/docs/gsutil) which you need to download.
 
-### [Cloud Storage](https://cloud.google.com/storage/)
-Cloud storage needs to be configured to handle index.html files as Gatsby stores directories with index.html files in them. We also need to configure
-the default 404 page when a file does not exist.
-Run `gsutil web set -m index.html -e not-found.html gs://itmayziii-portfolio`
+### Images and Other Assets
+Images are stored in [Cloud Storage](https://cloud.google.com/storage/) mostly because images often need added/updated without changing
+any code. There is a [public bucket setup](https://console.cloud.google.com/storage/browser/itmayziii-portfolio) where these assets are added.
+
+**Note** _The [Load Balancer](#load-balancinghttpscloudgooglecomload-balancing)_ has a URL map for `/images/*` to this storage bucket. 
 
 ### [Load Balancing](https://cloud.google.com/load-balancing/)
-The Google HTTPS load balancer is setup similar to [this article](https://cloud.google.com/load-balancing/docs/https/adding-backend-buckets-to-load-balancers)
-with a URL map for anything at `fullheapdeveloper.com/*` and `www.fullheapdeveloper.com/*` to the backend bucket. Load balancing SSL/TSL certificates
-are being managed by Google.
+The Google HTTPS load balancer is setup similar to [this article](https://cloud.google.com/compute/docs/instance-groups/adding-an-instance-group-to-a-load-balancer)
+with a URL map for anything at `fullheapdeveloper.com/*` and `www.fullheapdeveloper.com/*` to the backend instance group. Load balancing
+SSL/TSL certificates are being managed by Google.
 
 ### [DNS](https://cloud.google.com/dns/)
 DNS is managed through [Cloud DNS](https://cloud.google.com/dns/docs/quickstart). Simply configured to have an A record that points to `fullheapdeveloper.com`
 and a CNAME record that aliases `www.fullheapdeveloper.com` -> `fullheapdeveloper.com`.
 
 ### [Cloud Build (CI)](https://cloud.google.com/cloud-build/)
-[Config file](cloudbuild.yaml) - 
+There are 2 cloud build configuration files.
+1. [cloudbuild.yaml](cloudbuild.yaml) - Verifies every pull request by running the linter and tests.
+2. [cloudbuild-build.yaml](cloudbuild-build.yaml) - Builds the project, creates the docker image, and pushes the image to the container registry. 
+This is setup to fire on a new Git tag being created and pushed to Github.
