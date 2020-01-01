@@ -10,6 +10,7 @@ the [conventional way Gatsby uses ENV vars](https://www.gatsbyjs.org/docs/enviro
 their very nature not secrets. Gatsby wants you to have different env var files for each environment but this is cumbersome and you will almost
 always want to be able to do a production build with dev variables and the inverse from time to time. The `.env` file you copied above is used
 in the `gatsby-config.js` configuration file and is available to the frontend through `process.env[VARIABLE_NAME]` but only at build time not runtime.
+See [the infrastructure notes](#environment-variables) for a definition of each environment variable.
 
 ### Useful Commands
 * Start dev server - `npm run start`
@@ -73,3 +74,6 @@ There are 2 cloud build configuration files.
 1. [cloudbuild.yaml](cloudbuild.yaml) - Verifies every pull request by running the linter and tests.
 2. [cloudbuild-build.yaml](cloudbuild-build.yaml) - Builds the project, creates the docker image, and pushes the image to the container registry. 
 This is setup to fire on a new Git tag being created and pushed to Github.
+
+### Environment Variables
+GATSBY_DOMAIN - Domain without any suffix in front i.e. `fullheapdeveloper.com`
