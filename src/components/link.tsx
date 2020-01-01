@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link as GatsbyLink, GatsbyLinkProps } from 'gatsby'
-import { isAbsolutePath, makeAbsolutePath } from '../utilities'
+import { isAbsolutePath } from '../utilities'
 
 // interface LinkProps extends GatsbyLinkProps<any> {}
 
