@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/itmayziii/portfolio-ui/compare/v0.1.5...v0.1.6) (2020-01-01)
+
+
+### Bug Fixes
+
+* **gatsby plugin manifest:** added missing icon ([3698393](https://github.com/itmayziii/portfolio-ui/commit/3698393b3279709c21eea26a6f607f78fe676f65))
+
 ### [0.1.5](https://github.com/itmayziii/portfolio-ui/compare/v0.1.4...v0.1.5) (2019-12-31)
 
 
