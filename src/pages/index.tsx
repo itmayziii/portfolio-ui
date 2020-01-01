@@ -1,15 +1,14 @@
 import React from 'react'
-import { Image } from '../components/image'
+import { AppLayout } from '../layouts/app'
 
 const IndexPage: React.FC = function IndexPage () {
   return (
-    <div>
+    <AppLayout>
       <ul>
         <li>Hello Tommy</li>
         <li>Hello Tommy</li>
       </ul>
-      <Image src='hello.png' alt='it works'/>
-    </div>
+    </AppLayout>
   )
 }
 
