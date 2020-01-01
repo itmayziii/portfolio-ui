@@ -2,7 +2,9 @@
   // Purely for linting/typechecking, Gatsby is actually doing the compiling of typescript, hence the noEmit in this config.
   "include": [
     "./src/**/*",
-    "gatsby-*"
+    "./gatsby-*",
+    "./postcss.config.js",
+    "./tailwind.config.js"
   ],
   "exclude": [
     "node_modules"
