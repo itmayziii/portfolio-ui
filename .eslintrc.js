@@ -15,7 +15,9 @@ module.exports = {
       files: ['**/*.js'],
       rules: {
         // Obvious JS files need to use `require` for now but once modules land in a LTS of Node then we can use imports safely and this can be removed.
-        '@typescript-eslint/no-var-requires': 'off'
+        '@typescript-eslint/no-var-requires': 'off',
+        // JS files do not have return types.
+        '@typescript-eslint/explicit-function-return-type': 'off'
       }
     }
   ],
