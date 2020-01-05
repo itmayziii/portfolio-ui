@@ -34,6 +34,9 @@ Typescript is used in this project and is setup according to [the docs](https://
 We are attempting to use the utility classes everywhere we can, and when a CSS class need extracted out then we aim to use [Tailwind's @apply directive](https://tailwindcss.com/docs/functions-and-directives/#apply).
 Tailwind is being ran through [PostCSS](https://www.gatsbyjs.org/docs/post-css/) and the [config can be found here](postcss.config.js).
 
+#### Fonts
+https://stackoverflow.com/questions/2871655/proper-mime-type-for-fonts
+
 #### Keeping CSS Footprint Small
 Utility frameworks generally have a large CSS footprint in terms of file size initially. We are countering this with a PostCSS plugins called
 [PurgeCSS](https://www.purgecss.com/) which removes CSS not being used in the code. PurgeCSS does have some [caveats](https://tailwindcss.com/docs/controlling-file-size/#writing-purgeable-html)

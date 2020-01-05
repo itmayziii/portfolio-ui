@@ -1,12 +1,12 @@
 import React from 'react'
 import { AppLayout } from '../layouts/app'
 
-const IndexPage: React.FC = function IndexPage () {
+const BlahPage: React.FC = function BlahPage () {
   return (
     <AppLayout>
-      On the home page
+      On the blah page
     </AppLayout>
   )
 }
 
-export default IndexPage
+export default BlahPage

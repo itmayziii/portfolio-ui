@@ -1,25 +1,25 @@
 /**
- * Makes a path absolute if it is not already, optionally prepending a prefix to the path.
+ * Makes a URL absolute if it is not already, optionally prepending a prefix to the URL.
  *
  * @param domain - Domain without suffix i.e. fullheapdeveloper.com.
- * @param path - Relative or absolute path.
- * @param prefix - Optional prefix to add before path. Prefix is ignored if the path is empty.
- * @throws When path is an empty string as this is likely a mistake, use '/' if your trying to access to root.
+ * @param URL - Relative or absolute URL.
+ * @param prefix - Optional prefix to add before URL. Prefix is ignored if the URL is empty.
+ * @throws When URL is an empty string as this is likely a mistake, use '/' if your trying to access to root.
  */
-export function makeAbsolutePath (domain: string, path: string, prefix?: string): string {
-  if (path === '') {
-    throw new Error('makeAbsolutePath - Expected a non empty string for path but it was empty')
+export function makeAbsoluteURL (domain: string, URL: string, prefix?: string): string {
+  if (URL === '') {
+    throw new Error('makeAbsolutePath - Expected a non empty string for URL but it was empty')
   }
 
-  if (isAbsolutePath(path)) {
-    return path
+  if (isAbsoluteURL(URL)) {
+    return URL
   }
 
-  if (path === '/') {
+  if (URL === '/') {
     return `https://www.${domain}`
   }
 
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`
+  const normalizedPath = URL.startsWith('/') ? URL : `/${URL}`
   if (!prefix) {
     return `https://www.${domain}${normalizedPath}`
   }
@@ -36,10 +36,10 @@ export function makeAbsolutePath (domain: string, path: string, prefix?: string)
 }
 
 /**
- * Checks if a path is absolute.
+ * Checks if a URL is absolute.
  *
- * @param path - Relative or absolute path.
+ * @param url - Relative or absolute url.
  */
-export function isAbsolutePath (path: string): boolean {
-  return path.startsWith('http')
+export function isAbsoluteURL (url: string): boolean {
+  return url.startsWith('http')
 }

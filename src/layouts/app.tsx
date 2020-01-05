@@ -16,9 +16,9 @@ export const AppLayout: React.FC = function AppLayout ({ children }) {
           <li><Link to='/'>Full Heap Developer</Link></li>
           <li><Link to='/blah'>Blah</Link></li>
         </ul>
-        <Image src='testing' alt='some alt'/>
+        <Image src='testing.png' alt='testing alt'/>
       </nav>
-      <main className='h-full w-full'>
+      <main className='h-full w-full mt-4'>
         {children}
       </main>
     </React.Fragment>

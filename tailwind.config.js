@@ -1,3 +1,18 @@
+// https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
+const systemFonts = [
+  '-apple-system',
+  'BlinkMacSystemFont',
+  '“Segoe UI”',
+  '“Roboto”',
+  '“Oxygen”',
+  '“Ubuntu”',
+  '“Cantarell”',
+  '“Fira Sans”',
+  '“Droid Sans”',
+  '“Helvetica Neue”',
+  'sans-serif'
+]
+
 module.exports = {
   theme: {
     colors: {
@@ -14,6 +29,14 @@ module.exports = {
         dark: '#aaa',
         darker: '#484848'
       }
+    },
+    fontFamily: {
+      roboto: ['Roboto', ...systemFonts],
+      'roboto-italic': ['RobotoItalic', ...systemFonts],
+      'roboto-light': ['RobotoLight', ...systemFonts],
+      'roboto-light-italic': ['RobotoLightItalic', ...systemFonts],
+      'roboto-bold': ['RobotoBold', ...systemFonts],
+      'roboto-bold-italic': ['RobotoBoldItalic', ...systemFonts]
     },
     backgroundColor: theme => ({
       ...theme('colors')

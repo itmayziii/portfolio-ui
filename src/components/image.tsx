@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { makeAbsolutePath } from '../utilities'
+import { makeAbsoluteURL } from '../utilities'
 
 interface ImageProps {
   src: string
@@ -20,7 +20,7 @@ export const Image: React.FC<ImageProps> = function Image ({ src, alt }) {
   }
 
   return (
-    <img src={makeAbsolutePath(process.env.GATSBY_DOMAIN, src, 'images')} alt={alt}/>
+    <img src={makeAbsoluteURL(process.env.GATSBY_DOMAIN, src, 'images')} alt={alt}/>
   )
 }
 

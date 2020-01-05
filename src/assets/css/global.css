@@ -1,3 +1,11 @@
 html, body, #___gatsby, #gatsby-focus-wrapper {
-  @apply antialiased h-full overflow-x-hidden w-full text-gray-darker;
+  @apply antialiased h-full overflow-x-hidden w-full text-gray-light bg-blue-dark font-roboto;
+}
+
+/* Suggestion from the way we we are using fonts in ./fonts.css https://www.smashingmagazine.com/2013/02/setting-weights-and-styles-at-font-face-declaration/ */
+strong {
+  @apply font-roboto-bold font-bold not-italic;
+}
+em {
+  @apply font-roboto-italic font-normal italic;
 }

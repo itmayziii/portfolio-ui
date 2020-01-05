@@ -1,23 +1,25 @@
 import React from 'react'
 import { Link as GatsbyLink, GatsbyLinkProps } from 'gatsby'
-import { isAbsolutePath } from '../utilities'
+import { isAbsoluteURL } from '../utilities'
 
-// interface LinkProps extends GatsbyLinkProps<any> {}
+// There is a bug with {@link GatsbyLinkProps} which makes us have to omit the `ref` property https://github.com/gatsbyjs/gatsby/issues/16682.
+type LinkComponent = <T extends {}>(...funcArgs: Parameters<React.FC<Omit<GatsbyLinkProps<T>, 'ref'>>>) => ReturnType<React.FC>
 
 /**
  * Wrapper around Gatsby Link https://www.gatsbyjs.org/docs/gatsby-link/ to help make all links absolute as well as make sure only internal
  * links use Gatsby Link as per the docs.
  *
- * There is a bug with {@link GatsbyLinkProps} which makes us have to omit the `ref` property https://github.com/gatsbyjs/gatsby/issues/16682.
+ * i.e. In order to have types for the state object described here https://www.gatsbyjs.org/docs/gatsby-link/#pass-state-as-props-to-the-linked-page
+ * <li><Link<{ blah: string }> to='/' state={{ blah: 'someBlahValue' }}>Full Heap Developer</Link></li>
  *
  * @param gatsbyLinkProps - Properties for the Gatsby provided {@link GatsbyLink}.
  */
-export const Link: React.FC<Omit<GatsbyLinkProps<{}>, 'ref'>> = function Image (gatsbyLinkProps) {
+export const Link: LinkComponent = function Image (gatsbyLinkProps) {
   if (!process.env.GATSBY_DOMAIN) {
     throw new Error('Expected GATSBY_DOMAIN environment variable to not be empty.')
   }
 
-  if (isAbsolutePath(gatsbyLinkProps.to)) {
+  if (isAbsoluteURL(gatsbyLinkProps.to)) {
     return <a href={gatsbyLinkProps.to}>{gatsbyLinkProps.children}</a>
   }
 
