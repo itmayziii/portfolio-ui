@@ -13,7 +13,7 @@
     "typecheck": "tsc --project tsconfig.json",
     "lint": "eslint --config .eslintrc.js --ext .js,.ts,.jsx,.tsx ./src gatsby-* tailwind.config.js postcss.config.js && npm run typecheck",
     "lint:fix": "eslint --fix --config .eslintrc.js --ext .js,.ts,.jsx,.tsx ./src gatsby-* tailwind.config.js postcss.config.js && npm run typecheck",
-    "package": "standard-version -t",
+    "package": "standard-version",
     "prepackage": "npm run lint && npm run test"
   },
   "dependencies": {

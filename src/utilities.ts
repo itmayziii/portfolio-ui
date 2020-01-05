@@ -24,14 +24,7 @@ export function makeAbsoluteURL (domain: string, URL: string, prefix?: string): 
     return `https://www.${domain}${normalizedPath}`
   }
 
-  let normalizedPrefix = prefix
-  if (!normalizedPrefix.startsWith('/')) {
-    normalizedPrefix = `/${normalizedPrefix}`
-  }
-  if (!normalizedPrefix.endsWith('/')) {
-    normalizedPrefix = `${normalizedPrefix}/`
-  }
-
+  const normalizedPrefix = prefix.startsWith('/') ? prefix : `/${prefix}`
   return `https://www.${domain}${normalizedPrefix}${normalizedPath}`
 }
 
